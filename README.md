@@ -34,7 +34,7 @@ Go to the [Upstash Console](https://console.upstash.com/) and create a new datab
 
 #### Upstash environment
 
-- `REDIS_URL`: Find the URL in the database details page in Upstash Console clicking on **Redis Connect** button.
+-   `REDIS_URL`: Find the URL in the database details page in Upstash Console clicking on **Redis Connect** button.
 
 ## `4` Configuring Auth0
 
@@ -42,19 +42,19 @@ Go to the [Upstash Console](https://console.upstash.com/) and create a new datab
    Applications**.
 2. Go to the settings page of the application
 3. Configure the following settings:
-   - **Allowed Callback URLs**: Should be set to `http://localhost:3000/` when testing locally or typically
-     to `https://myapp.com/` when deploying your application.
-   - **Allowed Logout URLs**: Should be set to `http://localhost:3000/` when testing locally or typically
-     to `https://myapp.com/` when deploying your application.
-   - **Allowed Web Origins**: Should be set to `http://localhost:3000` when testing locally or typically
-     to `https://myapp.com/` when deploying your application.
+    - **Allowed Callback URLs**: Should be set to `http://localhost:3000/` when testing locally or typically
+      to `https://myapp.com/` when deploying your application.
+    - **Allowed Logout URLs**: Should be set to `http://localhost:3000/` when testing locally or typically
+      to `https://myapp.com/` when deploying your application.
+    - **Allowed Web Origins**: Should be set to `http://localhost:3000` when testing locally or typically
+      to `https://myapp.com/` when deploying your application.
 4. Save the settings.
 
 #### Auth0 environment
 
-- `NEXT_PUBLIC_AUTH0_DOMAIN`: Can be found in the Auth0 dashboard under `settings`.
-- `NEXT_PUBLIC_AUTH0_CLIENT_ID`: Can be found in the Auth0 dashboard under `settings`.
-- `NEXT_PUBLIC_AUTH0_ADMIN_EMAIL`: This is the email of the admin user which you use while signing in Auth0. Admin is able to delete any comment.
+-   `NEXT_PUBLIC_AUTH0_DOMAIN`: Can be found in the Auth0 dashboard under `settings`.
+-   `NEXT_PUBLIC_AUTH0_CLIENT_ID`: Can be found in the Auth0 dashboard under `settings`.
+-   `NEXT_PUBLIC_AUTH0_ADMIN_EMAIL`: This is the email of the admin user which you use while signing in Auth0. Admin is able to delete any comment.
 
 ## Deploy Your Local Project
 

@@ -1,30 +1,60 @@
 import 'tailwindcss/tailwind.css'
+import '@fontsource/jetbrains-mono/variable.css'
+import '../public/css/styles.css'
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Header from '../components/header'
-import { Auth0Provider } from '@auth0/auth0-react'
+import React from 'react'
+import Layout from '../components/Layout'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <Auth0Provider
-      clientId={process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID}
-      domain={process.env.NEXT_PUBLIC_AUTH0_DOMAIN}
-    >
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="Clone and deploy your own Next.js portfolio in minutes."
-        />
-        <title>My awesome blog</title>
-      </Head>
+const App = ({ Component, pageProps }: AppProps) => {
+    return (
+        <>
+            <Head>
+                <meta
+                    name='viewport'
+                    content='width=device-width, initial-scale=1'
+                />
+                <link rel="shortcut icon" href="/public/img/favicon.ico" />
+                <meta name='description' content="Tim Wheeler's Journal" />
+                <title>Journal | TimWheeler.com</title>
+            </Head>
 
-      <Header />
+            {/* Desktop Experience */}
+            <div className='hidden sm:block'>
+                {/* Journal Pages Effect */}
+                <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                    <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                        <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                            <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                                <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                                    <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                                        <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                                            <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                                                <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                                                    <div className={'grid-paper mr-1 bg-gray-100 border-r-2 border-r-gray-200'}>
+                                                        {/* Grid Container */}
+                                                        <Layout Component={Component} pageProps={pageProps} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      <main className="py-14">
-        <Component {...pageProps} />
-      </main>
-    </Auth0Provider>
-  )
+            {/* Mobile Experience */}
+            <div className={'block sm:hidden'}>
+                <Layout Component={Component} pageProps={pageProps}/>
+            </div>
+
+
+        </>
+    )
 }
+
+export default App

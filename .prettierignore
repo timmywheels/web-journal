@@ -1,0 +1,11 @@
+# dependencies
+node_modules
+
+# build artifacts
+.next/
+
+# static files
+*.json
+*.md
+*.config.js
+.gitignore

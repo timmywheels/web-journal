@@ -1,35 +1,70 @@
-import Container from '../components/container'
-import Image from 'next/image'
+import Container from '../components/Container'
+import React from 'react'
+import { InferGetStaticPropsType } from 'next'
+import Link from 'next/link'
+import { getAllPostsByYear } from '../lib/getPost'
+import Post from '../components/Post'
 
-function HomePage() {
-  return (
-    <>
-      <Container>
-        <div className="space-y-6">
-          <h1 className="text-2xl font-bold">
-            Hey, I'm a Senior Software Engineer at Company. I enjoy working with
-            Next.js and crafting beautiful front-end experiences.
-          </h1>
-          <p>
-            This portfolio is built with Next.js and a library called next-mdx.
-            It allows you to write Markdown and focus on the content of your
-            portfolio.
-          </p>
+const HomePage = ({
+    allPosts,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+    const postPublishedYears = Object.keys(allPosts).sort((a, b) =>
+        new Date(a).toDateString() > new Date(b).toDateString() ? -1 : 1
+    )
 
-          <p>Deploy your own in a few minutes.</p>
-        </div>
-      </Container>
+    return (
+        <Container>
+            <div className={'grow h-full'}>
+            {postPublishedYears.map((year) => {
+                const allPostsForYear = allPosts[year]
+                return (
+                    <>
+                        <div className="my-4">
+                            <div className={'highlight-container'}>
+                                <h1
+                                    className={
+                                        'highlight text-2xl font-extrabold font-monospace'
+                                    }
+                                >
+                                    {year}
+                                </h1>
+                            </div>
+                        </div>
+                        <div className={'py-4'}>
+                            {allPostsForYear.length ? (
+                                allPostsForYear.map((post, key) => {
+                                    return (
+                                        <Link
+                                            key={key}
+                                            as={`/${post.slug}`}
+                                            href="/[slug]"
+                                            className=""
+                                        >
+                                            <Post post={post}/>
+                                        </Link>
+                                    )
+                                })
+                            ) : (
+                                <p>😬</p>
+                            )}
+                        </div>
+                    </>
+                )
+            })}
+            </div>
+        </Container>
+    )
+}
 
-      <div className="container max-w-4xl m-auto px-4 mt-20">
-        <Image
-          src="/desk.jpg"
-          alt="my desk"
-          width={1920 / 2}
-          height={1280 / 2}
-        />
-      </div>
-    </>
-  )
+interface IAllPosts {
+    props: { allPosts: { [year: string]: Post[] } }
+}
+
+export async function getStaticProps(): Promise<IAllPosts> {
+    const allPosts = getAllPostsByYear(['slug', 'title', 'excerpt', 'date'])
+    return {
+        props: { allPosts },
+    }
 }
 
 export default HomePage
