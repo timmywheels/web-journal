@@ -1,6 +1,7 @@
 import 'tailwindcss/tailwind.css'
-import '@fontsource/jetbrains-mono/variable.css'
 import '../public/css/styles.css'
+import '@fontsource/jetbrains-mono/variable.css'
+import "@fontsource/east-sea-dokdo"
 
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -9,15 +10,14 @@ import Layout from '../components/Layout'
 
 const App = ({ Component, pageProps }: AppProps) => {
     return (
-        <>
+        <div>
             <Head>
                 <meta
                     name='viewport'
                     content='width=device-width, initial-scale=1'
                 />
-                <link rel="shortcut icon" href="/public/img/favicon.ico" />
                 <meta name='description' content="Tim Wheeler's Journal" />
-                <title>Journal | TimWheeler.com</title>
+                <title>tim wheeler's journal</title>
             </Head>
 
             {/* Desktop Experience */}
@@ -53,7 +53,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             </div>
 
 
-        </>
+        </div>
     )
 }
 

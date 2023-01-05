@@ -1,5 +1,6 @@
 import type { VFileCompatible } from 'vfile'
 import { remark } from 'remark'
+import remarkGfm from 'remark-gfm';
 import html from 'remark-html'
 
 export default async function markdownToHtml(markdown: VFileCompatible) {

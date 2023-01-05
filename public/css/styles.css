@@ -7,6 +7,10 @@ body {
     overflow: hidden;
 }
 
+.handwriting {
+    font-family: 'East Sea Dokdo', 'JetBrains Mono', 'monospace', '.AppleSystemUIFont';
+}
+
 .grid-paper {
     background-size: 40px 40px;
     background-image: linear-gradient(to right, #eee 1px, transparent 1px),
@@ -43,8 +47,7 @@ body {
     position: relative;
 }
 
-.handwritten-underline-container:hover
-> .handwritten-underline-stroke:nth-child(4) {
+.handwritten-underline-container:hover > .handwritten-underline-stroke:nth-child(4) {
     stroke-dashoffset: 0;
     stroke: rgba(255, 213, 0, 0.75);
 }
@@ -70,7 +73,7 @@ body {
     border-radius: 50%;
     position: relative;
     @apply
-    h-6 w-6
+    h-10 w-10
     border-2 border-gray-300
     ring-1 ring-gray-300 ring-inset
     bg-gray-200

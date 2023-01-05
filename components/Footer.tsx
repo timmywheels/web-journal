@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Container from './Container'
 import React from 'react'
 import classNames from 'classnames'
+import Image from 'next/image'
+import twLogoDark from '../public/img/tw-logo-dark.svg'
 
 const navigation = [
     {
@@ -41,43 +43,54 @@ const navigation = [
 
 const Footer = () => {
     return (
-        <footer>
+        <footer className={'pt-12 py-24'}>
             <Container>
-            <div className='mx-auto py-12 flex flex-col space-y-4 md:items-center'>
-                <div className='flex justify-center space-x-6'>
+                <div className='mx-auto py-12 flex flex-col space-y-4 md:items-center'>
+                    <div className='flex justify-center space-x-6'>
 
-                    {navigation.map((item) => (
-                        <Link key={item.name} href={item.href} target={'_blank'}
-                              className='text-gray-400 hover:text-gray-500'>
-                            <span className='sr-only'>{item.name}</span>
-                            <item.icon className='h-6 w-6' aria-hidden='true' />
-                        </Link>
-                    ))}
-                </div>
-                <div className={'flex items-center space-x-4'}>
-                    <div className={'font-monospace font-medium text-[11px]'}>Need consulting?</div>
-                    <div>
-                        <Link href={'https://cal.com/timwheeler/60-min'} target={'_blank'}>
-                            <button
-                                type='button'
-                                className={
-                                    classNames(
-                                        'inline-flex items-center rounded-md border',
-                                        'font-monospace',
-                                        'border-indigo-400 bg-indigo-600 px-2 py-1.5 text-[11px] font-medium leading-4 text-white shadow-sm',
-                                        'hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-                                    )
-                                }
-                            >
-                                Book a call with me
-                            </button>
-                        </Link>
+                        {navigation.map((item) => (
+                            <Link key={item.name} href={item.href} target={'_blank'}
+                                  className='text-gray-400 hover:text-gray-500'>
+                                <span className='sr-only'>{item.name}</span>
+                                <item.icon className='h-6 w-6' aria-hidden='true' />
+                            </Link>
+                        ))}
+                    </div>
+                    <div className={'flex flex-col items-center space-y-2'}>
+                        <div className={'font-monospace font-medium text-sm'}>Need consulting?</div>
+                        <div>
+                            <Link href={'https://cal.com/timwheeler/60-min'} target={'_blank'}>
+                                <button
+                                    type='button'
+                                    className={
+                                        classNames(
+                                            'inline-flex items-center rounded-md',
+                                            'font-monospace',
+                                            'border-b-4 border-b-indigo-800',
+                                            'bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm',
+                                            'hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
+                                        )
+                                    }
+                                >
+                                    Book a call with me
+                                </button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
-                {/*<div className="mt-8 md:order-1 md:mt-0">*/}
-                {/*    <p className="text-center text-base text-gray-400">TimWheeler.com</p>*/}
-                {/*</div>*/}
-            </div>
+                <div className={''}>
+                    <p className={'font-monospace text-sm font-medium text-center'}>From the <span className={'text-xl'}>🧠</span> of <Link className={'font-bold underline'} href={'https://timwheeler.com?ref=journal'} target={'_blank'}>Tim Wheeler</Link></p>
+                </div>
+                <div className={'flex justify-center'}>
+                    <Link href={'https://timwheeler.com?ref=journal'} target={'_blank'}>
+                    <Image
+                        alt='TimWheeler.com logo'
+                        src={twLogoDark}
+                        width={40}
+                        height={40}
+                    />
+                    </Link>
+                </div>
             </Container>
         </footer>
     )

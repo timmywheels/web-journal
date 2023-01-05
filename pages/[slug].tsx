@@ -7,6 +7,7 @@ import { getAllPosts, getPostBySlug } from '../lib/getPost'
 import markdownToHtml from '../lib/markdownToHtml'
 import Head from 'next/head'
 import React from 'react'
+import SubscribeCTA from '../components/SubscribeCTA'
 
 const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const router = useRouter()
@@ -31,7 +32,7 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
                                 <div className={'highlight-container'}>
                                     <h1
                                         className={
-                                            'highlight text-3xl font-extrabold font-monospace'
+                                            'highlight text-4xl font-extrabold font-monospace'
                                         }
                                     >
                                         {post.title}
@@ -39,7 +40,7 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
                                 </div>
                             </div>
                             {post.excerpt ? (
-                                <p className="mt-2 text-xl">{post.excerpt}</p>
+                                <p className="mt-2 text-xl font-medium text-gray-600">{post.excerpt}</p>
                             ) : null}
                             <time className="flex mt-2 text-gray-400">
                                 {distanceToNow(new Date(post.date))}
@@ -51,6 +52,7 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
                             dangerouslySetInnerHTML={{ __html: post.content }}
                         />
                     </article>
+                    <SubscribeCTA/>
                 </div>
             )}
         </Container>
